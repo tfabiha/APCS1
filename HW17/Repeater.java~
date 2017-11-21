@@ -1,0 +1,13 @@
+public class Repeater {
+    public static String fenceW(int numPosts) {\
+	String fence = "";
+	while (numPosts > 1) {
+	    fence += "|--";
+	    numPosts -= 1;
+	}
+	if (numPosts == 1) {
+	    fence += "|";
+	}
+	return fence;
+    }
+}

@@ -1,0 +1,10 @@
+public class Testing {
+    public static void main(String[] args) {
+	Stats numbers = new Stats();
+
+	// System.out.println
+	System.out.println("======================");
+	System.out.println("TESTING INT MEAN");
+	
+    }
+}

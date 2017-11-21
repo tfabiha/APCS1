@@ -1,0 +1,60 @@
+//Team 
+// <Firstname> <Lastname>
+//APCS1 pd02
+//HW28 -- Ye Olde Role Playing Game
+//2017-11-08   
+public class Protagonist{
+	//Attributes
+	private String name;
+	private int HP;
+	private int strength;
+	private int defense;
+	private int defenseStor;
+	private double attackRate;
+	private double attackStor;
+	public Protagonist(){
+		HP = 100;
+		strength = 50;
+		defense = 50;
+		attackRate = 0.5;
+		defenseStor = defense;
+		attackStor = attackRate;
+	}
+	public Protagonist (String newName){
+		this();
+		name = newName; 
+	}
+	public boolean isAlive(){
+		if (HP <= 0){
+			return false;
+		}
+		return true;	
+	}
+	public int getDefense(){
+		return defense;
+	}
+	public String getName(){
+		return name;
+	}
+	public int lowerHP(int lostHP){
+		if ((HP - lostHP) < 0){
+			return 0;
+		}
+		return HP - lostHP;	
+	} 
+	public double attack(Monster monster){
+		double damage = (strength * attackRate) - monster.getDefense();
+		return damage;
+	}
+	public void specialize(){
+		defense = (int)(defense / 2);
+		attackRate *= 2;
+	}
+	public void normalize(){
+		defense = defenseStor;
+		attackRate = attackStor;
+	}
+	public static void main(String [] args){
+		System.out.println(" This works");
+	}//end of the main method
+}

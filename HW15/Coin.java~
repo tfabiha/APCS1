@@ -1,0 +1,19 @@
+public class Coin {
+
+    // instance variables
+    private double value; // worth, units in dollars
+    private String upFace; // face currently showing
+    private String name; // name of coin
+    private int flipCtr;// # of times flipped
+    private int headsCtr;// # of times heads
+    private int tailsCtr;// # of times tails
+    private double bias; // probability of landing face; (1.0) all heads
+
+    //constructors
+
+    public Coin() {
+	name = "penny";
+	setValue();
+	flip();
+    }
+}

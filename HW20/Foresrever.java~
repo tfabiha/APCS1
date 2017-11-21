@@ -1,0 +1,13 @@
+public class Foresrever {
+
+    public static String fenceF(int posts) {
+	String fence = "";
+
+	for (remPosts = posts; remPosts > 0; x--) {
+
+	}
+
+	return fence;
+    }// FenceF
+    
+}//end class

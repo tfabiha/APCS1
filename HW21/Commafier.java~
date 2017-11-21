@@ -1,0 +1,21 @@
+public class Commafier {
+    public static String commafyF(int x) {
+	String num = x;
+	String ret = "";
+	for (int x = num.length() - 3; num.length() > 3; x - 3) {
+	    ret = "," + num.substring(x) + ret;
+	    num = num.substring(0,x);
+	}
+	ret = num + ret;
+	return ret;
+    }
+
+    public static void main(String[] args) {
+	System.out.println(commafyF(0));
+	System.out.println(commafyF(1));
+	System.out.println(commafyF(1000));
+	System.out.println(commafyF(12000));
+	System.out.println(commafyF(123235));
+	System.out.println(commafyF(12345467));
+    }
+}

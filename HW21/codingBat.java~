@@ -1,0 +1,29 @@
+public class codingBat {
+    public boolean catDog(String str) {
+	int cats = count("cat", str);
+	int dogs = count("dog", str);
+	return cats == dogs;
+    }
+
+    public int count(String name, String str) {
+	int counter = 0;
+	int length = str.length() - name.length();
+	int len_name = name.length();
+  
+	for (int x = 0; x < length; x++) {
+	    if (str.substring(x, x+length).equals(name)) {
+		counter++;
+	    }
+	}
+  
+	return counter;
+    }
+
+    public void sop(String s) {
+	System.out.println(s);
+    }
+    
+    public void main(String[] args) {
+	sop.(catDog("catdog"));
+    }
+}
