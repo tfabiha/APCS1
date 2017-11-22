@@ -1,0 +1,148 @@
+// Tabassum Fabiha
+// APCS1 PD2
+// HW36 -- Be Rational
+// 2017-11-18
+
+public class Rational {
+    //////////////////////
+    //INSTANCE VARIABLES//
+    //////////////////////
+    private int numerator;
+    private int denominator;
+
+    ////////////////
+    //CONSTRUCTORS//
+    ////////////////
+    public Rational() {
+	numerator = 0;
+	denominator = 1;
+    }
+
+    public Rational(int newNum, int newDen) {
+        this();
+
+	if (newDen != 0) {
+	    numerator = newNum;
+	    denominator = newDen;
+	} else {
+	    System.out.println("Invalid denominator attempted.");
+	}
+        //reduce();
+    }
+
+    ///////////
+    //METHODS//
+    ///////////
+    public String toString() {
+        return  numerator + " / " + denominator;
+    }
+
+    public double floatValue() {
+	return (double) numerator / denominator;
+    }
+
+    public void add(Rational thing) {
+	numerator += thing.denominator * denominator;
+	denominator *= thing.denominator;
+    }
+
+    public int subtract(Rational thing) {
+	numerator -= thing.denominator * denominator;
+	denominator *= thing.denominator;
+
+	return numerator;
+    }
+    
+    public void multiply(Rational thing) {
+	numerator *= thing.numerator;
+	denominator *= thing.denominator;
+	//reduce();
+    }
+
+    public void divide(Rational thing) {
+	if (thing.numerator != 0) {
+	    numerator *= thing.denominator;
+	    denominator *= thing.numerator;
+	} else {
+	    System.out.println("Invalid denominator attempted.");
+	}
+	//reduce();
+    }
+
+    public int compareTo(Rational thing) {
+	Rational placeHolder = new Rational(numerator, denominator);
+	return placeHolder.subtract(thing);
+    }
+
+    /////////////////
+    //extra methods//
+    /////////////////
+    public void reduce() {
+	if (numerator != 0 && denominator != 0) {
+	    int GCD = gcd(numerator, denominator);
+	    numerator /= GCD;
+	    denominator /= GCD;
+	}
+    }
+    
+    public int gcd(int a, int b){
+	if (b % a == 0){
+	    return a;
+	}else {
+	    int big = max(a, b);
+	    int smol = min(a, b);
+	    return gcd(big - smol, smol);
+	}
+    }
+
+    public int min(int a, int b){
+	if (a > b){
+	    return b;
+	}
+	return a;
+    }
+
+    public static int max(int a, int b){
+        if (a > b){
+            return a;
+        }
+	return b;
+    }
+
+    
+
+    //main method
+    public static void main(String[] args) {
+	Rational defaul = new Rational(2,0);
+	Rational r = new Rational(2,3);
+	Rational s = new Rational(3,2);
+
+	System.out.println(r.floatValue());
+
+	System.out.println("Original values simplified");
+	System.out.println("default:" + defaul);
+	System.out.println("r: " + r);
+	System.out.println("s: " + s);
+	System.out.println();
+
+	System.out.println("multiply r with s");
+	r.multiply(s);
+	System.out.println("r: " + r);
+	System.out.println();
+
+	System.out.println("divide s with r");
+	s.divide(r);
+	System.out.println("s: " + s);
+	System.out.println();
+
+	System.out.println(r.floatValue());
+	System.out.println();
+
+	r.subtract(s);
+	System.out.println("r: " + r);
+
+	r.compareTo(s);
+	System.out.println("r: " + r);
+	
+    }
+}
