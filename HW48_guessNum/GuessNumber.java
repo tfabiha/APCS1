@@ -25,6 +25,8 @@ public class GuessNumber
       _guessCtr is 0, _target is random int on range [_lo,_hi]
       ==================================================*/
     public GuessNumber( int a, int b ) {
+	// sets the lowest number to _lo
+	// sets the highest number to _hi
         if (a < b) {
 	    _lo = a;
 	    _hi = b;
@@ -37,6 +39,7 @@ public class GuessNumber
 	_target = (int) (Math.random() * (_hi - _lo + 1)) + _lo;
     }
 
+    // prints the target for debugging purposes
     public void printT() {
 	System.out.println(_target);
     }
