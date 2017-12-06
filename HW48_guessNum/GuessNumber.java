@@ -1,3 +1,8 @@
+// Tabassum Fabiha
+// APCS1 pd2
+// HW48 -- Keep Guessing
+// 2017-12-07
+
 /*==================================================
   class GuessNumber -- fun fun fun!
 
