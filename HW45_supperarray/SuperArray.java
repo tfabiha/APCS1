@@ -1,7 +1,7 @@
 // Tabassum Fabiha
 // APCS1 pd2
-// HW43 -- adhering to a published standard (implementing an interface)
-// 2017-11-30r
+// HW45 - "In America, the Driver Sits on the Left" 
+// 2017-12-04 m
 
 /***************************
  * class SuperArray version 3.0
@@ -14,17 +14,17 @@
  * removing an element at specified index
  *
  * ...and now SuperArray complies with the specifications of the
- * ListInt interface. (ListInt.java must be in same dir as this file)
+ * List interface. (List.java must be in same dir as this file)
  ***************************/
 
 public class SuperArray implements List {
-    private int[] _data;  //underlying container
+    private Object[] _data;  //underlying container
     private int _size;    //number of elements in this SuperArray
 
 
     //default constructor – initializes 10-item array
     public SuperArray() {
-	_data = new int[10];
+	_data = new Object[10];
 	_size = 0;
     }
 
@@ -45,7 +45,7 @@ public class SuperArray implements List {
 
     //double capacity of SuperArray
     private void expand() {
-	int[] temp = new int[ _data.length * 2 ];
+	Object[] temp = new Object[ _data.length * 2 ];
 	for( int i = 0; i < _data.length; i++ )
 	    temp[i] = _data[i];
 	_data = temp;
@@ -53,45 +53,70 @@ public class SuperArray implements List {
 
 
     //accessor -- return value at specified index
-    public int get( int index ) {
+    public Object get( int index ) {
+	if (index < 0 || index >= size()) {
+	    throw new IndexOutOfBoundsException();
+	}
+	
 	return _data[index];
     }
 
 
     //mutator -- set value at index to newVal,
     //           return old value at index
-    public int set( int index, Object o ) {
+    public Object set( int index, Object newVal ) {
+	if (index < 0 || index >= size()) {
+	    throw new IndexOutOfBoundsException();
+	}
+	
 	Object temp = _data[index];
-	_data[index] = o;
+	_data[index] = newVal;
 	return temp;
     }
 
 
     //adds an item after the last item
-    public boolean add( Object o ) {
-	add( _size, o );
+    public boolean add( Object newVal ) {
+	if (_size >= _data.length); {
+	    expand();
+	}
+
+	_data[_size] = newVal;
+	_size += 1;
 	return true;
     }
 
 
     //inserts an item at index
-    public void add( int index, Object o ) {
-	//first expand if necessary
-	if ( _size >= _data.length )
-	    expand();
-	for( int i = _size; i > index; i-- ) {
-	    _data[i] = _data[i-1]; //each slot gets value of left neighbor
+    public void add( int index, Object newVal ) {
+	if (_size == index) {
+	    add(newVal);
+	} else {
+	    if (index < 0 || index >= size()) {
+		throw new IndexOutOfBoundsException();
+	    }
+	
+	    //first expand if necessary
+	    if ( _size >= _data.length )
+		expand();
+	    for( int i = _size; i > index; i-- ) {
+		_data[i] = _data[i-1]; //each slot gets value of left neighbor
+	    }
+	    _data[index] = newVal;
+	    _size++;
 	}
-	_data[index] = o;
-	_size++;
     }
 
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
     //returns removed value
-    public int remove( int index ) {
-	Object re = _data[index];
+    public Object remove( int index ) {
+	if (index < 0 || index >= size()) {
+	    throw new IndexOutOfBoundsException();
+	}
+	
+	Object ret = _data[index];
 	for( int i = index; i < _size - 1; i++ ) {
 	    _data[i] = _data[i+1];
 	}
@@ -113,11 +138,11 @@ public class SuperArray implements List {
 	System.out.println("Printing empty SuperArray mayfield...");
 	System.out.println(mayfield);
 
-	mayfield.add(5);
-	mayfield.add(4);
-	mayfield.add(3);
-	mayfield.add(2);
-	mayfield.add(1);
+	mayfield.add("Hello");
+	mayfield.add("there");
+	mayfield.add("person");
+	mayfield.add("something");
+	mayfield.add("uhhh");
 
 	System.out.println("Printing populated SuperArray mayfield...");
 	System.out.println(mayfield);
@@ -128,14 +153,15 @@ public class SuperArray implements List {
 	mayfield.remove(3);
 	System.out.println("Printing SuperArray mayfield post-remove...");
 	System.out.println(mayfield);
-
-	mayfield.add(3,99);
+	System.out.println(mayfield.size());
+	
+	mayfield.add(3,"loop");
 	System.out.println("Printing SuperArray mayfield post-insert...");
 	System.out.println(mayfield);
-	mayfield.add(2,88);
+	mayfield.add(2,"dun-dun");
 	System.out.println("Printing SuperArray mayfield post-insert...");
 	System.out.println(mayfield);
-	mayfield.add(1,77);
+	mayfield.add(1,"asdfg");
 	System.out.println("Printing SuperArray mayfield post-insert...");
 	System.out.println(mayfield);
 	/*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
