@@ -1,0 +1,23 @@
+// Tabassum Fabiha
+// APCS1 pd2
+// HW47 -- ascending
+// 2017-12-05 w
+
+import java.util.ArrayList;
+
+public class OrderedArrayList {
+    private ArrayList<Comparable> list;
+
+    public OrderedArrayList() {
+	list = new ArrayList<Comparable>();
+    }
+
+    public boolean add(Object o) {
+	
+    }
+
+    private void addTo(Object o, int before, int after) {
+	
+    }
+
+}

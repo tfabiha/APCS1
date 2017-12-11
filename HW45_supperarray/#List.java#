@@ -1,0 +1,5 @@
+public interface List {
+
+    // adds 
+    public boolean add( Object o );
+}
