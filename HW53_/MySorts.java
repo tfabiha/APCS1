@@ -2,7 +2,7 @@ public class MySorts {
     // VOID version of bubbleSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void bubbleSortV( ArrayList<Comparable> data ) {
+    public static void bubbleSort( ArrayList<Comparable> data ) {
 	//make n-1 passes across collection
 	for( int passCtr = 1; passCtr < data.size(); passCtr++ ) {
 	    System.out.println( "commencing pass #" + passCtr + "..." );
@@ -15,12 +15,12 @@ public class MySorts {
 		//System.out.println(data); //diag: show current state of list
 	    }
 	}
-    }
+    }//end bubbleSort
 
     // VOID version of InsertionSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void insertionSortV( ArrayList<Comparable> data )
+    public static void insertionSort( ArrayList<Comparable> data )
     {
 	for( int partition = 1; partition < data.size(); partition++ ) {
 	    //partition marks first item in unsorted region
@@ -43,12 +43,12 @@ public class MySorts {
 		    break; 
 	    }
 	}
-    }//end insertionSortV
+    }//end insertionSort
 
     // VOID version of SelectionSort
     // Rearranges elements of input ArrayList
     // postcondition: data's elements sorted in ascending order
-    public static void selectionSortV( ArrayList<Comparable> data ) 
+    public static void selectionSort( ArrayList<Comparable> data ) 
     {
 	//note: this version places greatest value at rightmost end,
 
@@ -67,6 +67,6 @@ public class MySorts {
 	    data.set( maxPos, ( data.set( pass, data.get(maxPos) ) ) );
 	    System.out.println( "after swap: " +  data );//diag
 	}
-    }//end selectionSortV
+    }//end selectionSort
     
 }
