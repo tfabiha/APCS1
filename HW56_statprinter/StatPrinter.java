@@ -1,3 +1,8 @@
+// Tabassum Fabiha
+// APCS1 pd2
+// HW56 -- His Toe Grammar
+// 2017-12-19 t
+
 /*====================================================================
   An AP-style question, for practice:
   Write the StatPrinter class below. The StatPrinter Object receives an
@@ -52,16 +57,21 @@ public class StatPrinter {
     //          _frequency.get(i) returns frequency of i in data
     //eg, for data [2,3,2,5,2,3]
     //  _frequency would be [0,0,3,2,0,1]
-    public StatPrinter( ArrayList <Integer> data ) { 
+    public StatPrinter( ArrayList <Integer> data ) { // O(n^2)
+	_frequency = new ArrayList<Integer>();
 	int largest = max(data);
-
-	for (int x = 0; x < largest + 1; x++) {
+	
+	//System.out.println("made largest");
+	    
+	for (int x = 0; x <= largest; x++) {
 	    int count = 0;
-
+	    //System.out.println("index is: " + x);
+	    
 	    for (int y = 0; y < data.size(); y++) {
 		if (x == data.get(y)) {
 		    count += 1;
 		}
+		//System.out.println("count is: " + count);
 	    }
 
 	    _frequency.add(count);
@@ -72,7 +82,7 @@ public class StatPrinter {
     //*************** QUESTION 01 **************************
     //precond:  data.size() > 0
     //postcond: returns largest integer in data
-    public Integer max( ArrayList <Integer> data ) { 
+    public Integer max( ArrayList <Integer> data ) { // O(n)
 	int largest = 0;
 	
 	for (int x = 0; x < data.size(); x++) {
@@ -95,7 +105,7 @@ public class StatPrinter {
     //    isLocalMode(0) -> false
     //    isLocalMode(1) -> true
     //    isLocalMode(5) -> true
-    public boolean isLocalMode( int i ) { 
+    public boolean isLocalMode( int i ) { //O(1)
         return
 	    i > 0 &&
 	    i < _frequency.size()-1 &&
@@ -106,7 +116,7 @@ public class StatPrinter {
 
     //*************** QUESTION 04 **************************
     //postcond: returns list of modes in _frequency
-    public ArrayList<Integer> getLocalModes() {
+    public ArrayList<Integer> getLocalModes() { //O(n)
 	ArrayList<Integer> ret = new ArrayList<Integer>();
 
 	for (int x = 0; x < _frequency.size(); x++) {
@@ -121,7 +131,7 @@ public class StatPrinter {
 
     //*************** QUESTION 05 **************************
     //precond:  longestBar > 0
-    public void printHistogram( int longestBar ) {
+    public void printHistogram( int longestBar ) { // O(n)
 	String stars = "";
         for (int x = 0; x < longestBar / max(_frequency); x++) {
 	    stars += "*";
@@ -134,21 +144,8 @@ public class StatPrinter {
 		print += stars;
 	    }
 
-	    System.out.println(print);
+	    System.out.println(x + " : " + print);
 	}
-    }
-
-    public static void main(String[] args) {
-	ArrayList<Integer> al1 = new ArrayList<Integer>();
-	al1.add(2);
-	al1.add(5);
-	al1.add(2);
-	al1.add(3);
-	al1.add(4);
-	al1.add(4);
-	al1.add(4);
-
-	
     }
  
 }//end class StatPrinter
