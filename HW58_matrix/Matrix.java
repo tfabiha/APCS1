@@ -1,3 +1,8 @@
+// Tabassum Fabiha
+// APCS1 pd2
+// HW58 -- Make the Matrix Work For You
+// 2017-20-17
+
 /***
  * class Matrix -- models a square matrix
  *
