@@ -33,34 +33,40 @@ public class Matrix
 
     //default constructor intializes a DEFAULT_SIZE*DEFAULT_SIZE matrix
     public Matrix( ) {
+	// O(1)
 	matrix = new Object[DEFAULT_SIZE][DEFAULT_SIZE];
     }
 
 
     //constructor intializes an a*a matrix
     public Matrix( int a ) {
+	// O(1)
 	matrix = new Object[a][a];
     }
     
     //return size of this matrix, where size is 1 dimension
     private int size() {
+	// O(1)
 	return matrix.length;
     }
 
 
     //return the item at the specified row & column   
     private Object get( int r, int c ) {
+	// O(1)
 	return matrix[r - 1][c - 1];
     }
 
 
     //return true if this matrix is empty, false otherwise
     private boolean isEmpty() {
+	// O(n*n)
         boolean empty = true;
 	
 	for (int r = 0; r < matrix.length && empty; r++) {
 	    for (int c = 0; c < matrix[r].length && empty; c++) {
-		empty = !(matrix[r][c] instanceof Object);
+		empty = matrix[r][c] == null;
+		//empty = !(matrix[r][c] instanceof Object);
 	    }
 	}
 
@@ -71,6 +77,7 @@ public class Matrix
     //overwrite item at specified row and column with newVal
     //return old value
     private Object set( int r, int c, Object newVal ) {
+	// O(1)
 	Object temp = matrix[r - 1][c - 1];
 	matrix[r - 1][c - 1] = newVal;
 	return temp;
@@ -80,6 +87,7 @@ public class Matrix
     //return String representation of this matrix
     // (make it look like a matrix)
     public String toString() {
+	// O(n*n)
 	String print = "\n";
 
 	/*print += "    col\t";
@@ -108,8 +116,11 @@ public class Matrix
     //override inherited equals method
     //criteria for equality: matrices have identical dimensions,
     // and identical values in each slot
-    public boolean equals( Matrix rightSide ) {
-        if ( !(this.size() == rightSide.size())) {
+    public boolean equals( Object rightSide ) {
+	// best case: O(1)
+	// worst case: O(n*n)
+	Matrix that = (Matrix) rightSide;
+        if ( !(this.size() == that.size())) {
 	    return false; 
 	}
 
@@ -118,7 +129,7 @@ public class Matrix
 
 	    for (int c = 1; c <= this.size() && identical; c++) {
 		Comparable mine = (Comparable) this.get(r, c);
-		Comparable theirs = (Comparable) rightSide.get(r, c);
+		Comparable theirs = (Comparable) that.get(r, c);
 		identical = mine.compareTo(theirs) == 0;
 	    }
 	}
@@ -132,6 +143,7 @@ public class Matrix
     //row values increase going down
     //column value increase L-to-R
     public void swapColumns( int c1, int c2  ) {
+	// O(n)
 	for (int r = 0; r < matrix.length; r++) {
 	    Object temp = matrix[r][c1 - 1];
 	    matrix[r][c1 - 1] = matrix[r][c2 - 1];
@@ -146,6 +158,7 @@ public class Matrix
     //row values increase going down
     //column value increase L-to-R
     public void swapRows( int r1, int r2  ) {
+	// O(n)
 	Object[] temp = matrix[r1 - 1];
 	matrix[r1 - 1] = matrix[r2 - 1];
 	matrix[r2 - 1] = temp;
